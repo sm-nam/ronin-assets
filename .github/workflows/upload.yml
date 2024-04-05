@@ -1,0 +1,38 @@
+name: Upload to CDN
+
+on:
+  push:
+    branches:
+      - master
+      
+  workflow_dispatch:
+
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 #v4.1.2
+      
+      - id: 'auth'
+        name: 'GCP Auth'
+        uses: 'google-github-actions/auth@55bd3a7c6e2ae7cf1877fd1ccb9d54c0503c457c' #v2.1.2
+        with:
+          workload_identity_provider: ${{ secrets.GH_ACTIONS_CDN_WIP }}
+          service_account: ${{ secrets.GH_ACTIONS_CDN_SA }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@98ddc00a17442e89a24bbf282954a3b65ce6d200' #v2.1.0
+
+      - name: Change folder names to lowercase
+        run: |
+          find ronin/* -maxdepth 2 -type d -exec sh -c 'mv "$1" "$(dirname "$1")/$(basename "$1" | tr "[:upper:]" "[:lower:]")"' _ {} \;  
+
+      - name: 'Upload CDN'
+        run: |
+          set -eo pipefail
+          gsutil -m rsync -d -r -x '^(?!ronin/).*' ./ gs://${{ vars.CDN_BUCKET_NAME }}
