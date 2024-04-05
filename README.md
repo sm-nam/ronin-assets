@@ -1,8 +1,7 @@
 # Ronin Assets
 
-Ronin Assets repository is CMS to manage tokens information on the Ronin blockchain (including Saigon Testnet)
-
-Ronin ecosystem will consume API from this repository.
+The Ronin Assets repository serves as a CMS for managing token assets on the Ronin blockchain, including the Saigon Testnet. 
+The Ronin ecosystem will utilize token assets sourced from this repository.
 
 ## How to add token logo and banner
 
@@ -67,15 +66,15 @@ Ronin ecosystem will consume API from this repository.
 
 ## How to consume assets
 
-The workloads will upload all files in this repository to the CDN with the same directory
+The workloads will upload all files in this repository to the CDN with the format:
+- https://cdn.skymavis.com/ronin/${chainID}/${ercType}/${tokenAddress}/logo.png
+- https://cdn.skymavis.com/ronin/ron/logo.png
 
-- Prod environment: `https://cdn.skymavis.com/`
-
-**_Example:_** [https://cdn.skymavis.com/ronin/2020/erc1155/0x02286d77425ae3287335ff28b264109225ed6991/logo.png](https://cdn.skymavis.com/ronin/2020/erc1155/0x02286d77425ae3287335ff28b264109225ed6991/logo.png)
+**_Example:_** 
+- [https://cdn.skymavis.com/ronin/2020/erc1155/0x02286d77425ae3287335ff28b264109225ed6991/logo.png](https://cdn.skymavis.com/ronin/2020/erc1155/0x02286d77425ae3287335ff28b264109225ed6991/logo.png)
+- [https://cdn.skymavis.com/ronin/2020/erc1155/0x02286d77425ae3287335ff28b264109225ed6991/banner.png](https://cdn.skymavis.com/ronin/2020/erc1155/0x02286d77425ae3287335ff28b264109225ed6991/banner.png)
 
 ## Integration status
-
-**_Disclaimer:_** Not all products in the Ronin ecosystem will integrate with Ronin Assets. The integration progress will be updated here:
 
 - [ ] Ronin App
 - [ ] Ronin Explorer
