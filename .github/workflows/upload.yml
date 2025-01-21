@@ -24,6 +24,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GH_ACTIONS_CDN_WIP }}
           service_account: ${{ secrets.GH_ACTIONS_CDN_SA }}
+          export_environment_variables: false
 
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@6189d56e4096ee891640bb02ac264be376592d6a' #v2.1.2
