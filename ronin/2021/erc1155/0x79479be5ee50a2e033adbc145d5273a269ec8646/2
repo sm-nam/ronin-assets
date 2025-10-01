@@ -5,12 +5,12 @@
   "attributes": [
     {
       "trait_type": "test",
-      "value": "11111111132",
+      "value": "111111111321",
       "display_type": "string"
     },
     {
       "trait_type": "test 2",
-      "value": "222222213",
+      "value": "2222221213",
       "display_type": "string"
     },
     {
